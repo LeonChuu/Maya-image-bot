@@ -150,6 +150,8 @@ Maya_list = (
     "https://cdn.discordapp.com/attachments/1003767450665504848/1003815410371661904/mayapirates.png",
     "https://cdn.discordapp.com/attachments/1003767450665504848/1003815410883379250/maya2.png"
     "https://cdn.discordapp.com/attachments/1003767450665504848/1003815411223121970/maya3.png",
+    "https://cdn.discordapp.com/attachments/134028939764039681/1004518756602626048/unknown.png",
+    "https://cdn.discordapp.com/attachments/134028939764039681/1004518756241899661/unknown.png",
 )
 
 Megu_list = (
