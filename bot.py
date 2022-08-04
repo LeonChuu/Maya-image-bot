@@ -74,6 +74,8 @@ def check_thread(ctx: lightbulb.context):
 
 # poke
 @bot.command
+@lightbulb.add_checks(check_thread)
+# This checks the channel id to make sure it is the designated channel
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 # This sets how many instances of this command can run at the same time, if 2 people use this command at the same time one will return an error
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
@@ -129,6 +131,7 @@ async def maya(ctx):
 
 # Megu
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('megu', 'provides an adorable megu image!')
@@ -151,6 +154,7 @@ async def megu(ctx):
 
 # Chino
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
@@ -173,6 +177,7 @@ async def chino(ctx):
 
 # Chimame
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
@@ -195,6 +200,7 @@ async def chimame(ctx):
 
 # Cocoa
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
@@ -217,6 +223,7 @@ async def cocoa(ctx):
 
 # Rize
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('rize', 'provides an adorable rize image!')
@@ -239,6 +246,7 @@ async def rize(ctx):
 
 # Syaro
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
@@ -261,6 +269,7 @@ async def syaro(ctx):
 
 # Chiya
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
@@ -283,6 +292,7 @@ async def chiya(ctx):
 
 # Fuyu
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
@@ -313,6 +323,7 @@ RPS_response_list = (
 
 # RPS
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "your play", choices = ("Rock", "Paper", "Scissors"), required=True)
@@ -370,6 +381,7 @@ async def rps(ctx):
 
 # Rate
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "What you want maya to rate.", required=True)
@@ -505,6 +517,7 @@ async def rate(ctx):
 # Chatbot, (This command is a work in progress)
 # Most of the code here was contributed by contributors on the support discord
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "what you want to say to maya. (WIP)", required=True)
@@ -540,6 +553,7 @@ async def say(ctx):
 
 # Command usage
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("usage", "display how many times each command has been used.")
@@ -611,6 +625,7 @@ async def usage(ctx: lightbulb.context):
 
 # RPS stats
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("rpsstats", "Show RPS Stats.")
@@ -644,6 +659,7 @@ async def rpsstats(ctx: lightbulb.context):
     await ctx.respond(embed=embed)
 
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command("github", "link to the bot's github page")
