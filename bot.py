@@ -30,8 +30,7 @@ load_dotenv()
 
 bot = lightbulb.BotApp(
     token = os.getenv("DISCORD_TOKEN"),
-    default_enabled_guilds=
-    (
+    default_enabled_guilds = (
     707938586988642376, 
     965307477698707506, 
     767743597809500160, 
@@ -368,122 +367,117 @@ async def rate(ctx):
         return
     
     print("Rate command invoked")
+    x = ctx.options.choice.lower()
     
-    if ctx.options.choice in (
-        "@everyone", "@Everyone"
+    if x in (
+        "@everyone"
         ):
         await ctx.respond(
             "Nice try bucko <a:MayaTssk:1000491767650582539>", flags=hikari.MessageFlag.EPHEMERAL
             )
         return
 
-    if ctx.options.choice in (
-        "Maya", "maya", "Maya Jouga", "maya jouga", "Jouga Maya", "jouga maya", "Myself", "myself", "Me", "me"
+    if x in (
+        "maya", "maya jouga", "jouga maya", "me", "myself"
         ):
         await ctx.respond(
             "Ehh Myself? uhhh, I dont know. <:MayaLaugh:981702800562073600>"
             )
         return
 
-    if ctx.options.choice in (
-        "Megu", "megu", "Megumi Natsu", "megumi natsu", "Natsu Megumi", "natsu megumi"
+    if x in (
+        "megu", "megumi natsu", "natsu megumi"
         ):
         await ctx.respond(
             "Megu? We've been best friends since we were both little. <:MayaLaugh:981702800562073600>"
             )
         return
 
-    if ctx.options.choice in (
-        "Chino", "chino", "Chino Kafuu", "chino kafuu", "Kafuu Chino", "kafuu chino"
+    if x in (
+        "chino", "chino kafuu", "kafuu chino"
         ):
         await ctx.respond(
             "Chino? Shes a bit quiet but a friend nontheless! <:MayaSalute:741219403118674000>"
             )
         return
 
-    if ctx.options.choice in (
-        "Rize", "rize", "Rize Tedeza", "rize tedeza", "Tedeza Rize", "tedeza rize"
+    if x in (
+        "rize", "rize tedeza", "tedeza rize"
         ):
         await ctx.respond(
             "Rize? She's super cool! She knows CQC and stuff! <:MayaSugoi:741219402770546759>"
             )
         return
-    if ctx.options.choice in (
-        "Cocoa", "cocoa", "Cocoa Hoto", "cocoa hoto", "Hoto Cocoa", "hoto cocoa"
+    if x in (
+        "cocoa", "cocoa hoto", "hoto cocoa"
     ):
         await ctx.respond(
             "Cocoa? She's a bit of an airhead but cool. <:MayaLaugh:981702800562073600>"
         )
         return
 
-    if ctx.options.choice in (
-        "Syaro", "syaro", "Syaro Kirima", "syaro kirima", "Kirima Syaro", "kirima syaro"
+    if x in (
+        "syaro", "syaro kirima", "kirima syaro"
     ):
         await ctx.respond(
             "Syaro? She's super mature and responsible, cool... <:MayaSugoi:741219402770546759>"
         )
         return
 
-    if ctx.options.choice in (
-        "Chiya", "chiya", "Chiya Ujimatsu", "chiya ujimatsu", " Ujimatsu Chiya", "ujimatsu Chiya"
+    if x in (
+        "chiya", "chiya ujimatsu", "ujimatsu Chiya"
     ):
         await ctx.respond(
             "Chiya? She's kind of an airhead too but a fun person. <:mayasmirk:769351955565772822>"
         )
         return
 
-    if ctx.options.choice in (
-        "Tippy", "tippy"
+    if x in (
+        "tippy"
     ):
         await ctx.respond(
             "Tippy? that's Chino's rabbit, i feel like i would get XP for defeating it! <:MayaXD:982772380902490132>"
         )
         return
 
-    if ctx.options.choice in (
-        "Fuyu", "fuyu", "Fuyu Fuiba", "fuyu fuiba", "Fuiba Fuyu", "fuiba fuyu"
+    if x in (
+        "fuyu", "fuyu fuiba", "fuiba fuyu"
     ):
         await ctx.respond(
         "Fuyu...? who? <:mayaded:787784902602129419>"
         )
         return
     
-    if ctx.options.choice in (
-        "Aoyama", "aoyama", 
-        "Aoyama Midori", 
-        "aoyama midori", 
-        "Midori Aoyama", 
-        "midori aoyama", 
-        "Aoyama Blue Mountain", 
-        "aoyama blue mountain"
+    if x in (
+        "aoyama",  "aoyama midori", "midori aoyama", "aoyama blue mountain"
     ):
         await ctx.respond(
             "Aoyama? I think Syaro told me about her, told me to be wary of her... <:mayaded:787784902602129419>"
             )
         return
-    if ctx.options.choice in (
-        "Anko", "anko"
+    if x in (
+        "anko"
     ):
         await ctx.respond(
             "Anko? that's Chiya's rabbit, he's a bit strage, apparently he pounces to attack whenever he sees Syaro... <:mayaded:787784902602129419>"
         )
         return
-    if ctx.options.choice in (
-        "Wild Geese", "wild geese"
+    if x in (
+        "wild geese"
     ):
         await ctx.respond(
             "Wild Geese? that's Syaro's pet rabbit he's like the final boss after defeating Tippy! <:MayaSugoi:741219402770546759>"
         )
         return
-    if ctx.options.choice in (
-        "Chimame", "chimame", "Chimame Tai", "chimame tai"
+    if x in (
+        "chimame", "chimame tai"
     ):
         await ctx.respond(
             "I initially didn't like the name, but its grown on me since. <:mayasmirk:769351955565772822>"
         )
         return
-    if ctx.options.choice in (
-        "Takahiro", "takahiro", "Takahiro Kafuu", "takahiro kafuu", "Kafuu Takahiro", "kafuu takahiro"
+    if x in (
+        "takahiro", "takahiro kafuu", "kafuu takahiro"
     ):
         await ctx.respond(
             "Takahiro? That's Chino's Dad, Me and Megu interviewed him for a school project once. <:MayaXD:982772380902490132>"
@@ -635,7 +629,16 @@ async def rpsstats(ctx: lightbulb.context):
     
     await ctx.respond(embed=embed)
 
-
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.GuildBucket)
+@lightbulb.command("github", "link to the bot's github page")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def maya(ctx):
+    if ctx.author.id in (bannedusers.bannedusers):
+        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+    await ctx.respond("<https://github.com/WlLDSAKE/Maya-image-bot>", flags=hikari.MessageFlag.EPHEMERAL)
 
 bot.run(
     status=hikari.Status.ONLINE,
