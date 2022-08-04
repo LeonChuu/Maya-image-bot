@@ -44,7 +44,7 @@ bot = lightbulb.BotApp(
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
         print("command cooldown error")
-        await event.context.respond(f"Oi, Don't spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+        await event.context.respond(f"Command is on cooldown <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
         # This is an error condition that triggers if a person tries to send too many commands too quickly
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
         print("Concurrency limit reached")
@@ -53,17 +53,30 @@ async def on_error(event: lightbulb.CommandErrorEvent):
             )
         # This is an error condition that triggers if too many commands are trying to run at the same time
     if isinstance(event.exception, lightbulb.CheckFailure):
-        await event.context.respond(f"This command is restricted to the dev only for now", flags=hikari.MessageFlag.EPHEMERAL)
-        # this is an error condition that triggers if certain checks arent met, i am only using it to restrict certain commands to only myself for now
+        await event.context.respond(f"Please use the designated channel/thread for commands (<#1004841655007989851> for rabbit house)", flags=hikari.MessageFlag.EPHEMERAL)
+        print("redirect")
+        # this is an error condition that triggers if certain checks arent met
+
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
     print('bot has started!')
     # This just prints that the bot has started
-# Greetings
+
+@lightbulb.Check
+def check_thread(ctx: lightbulb.context):
+    return ctx.channel_id in (
+        1004841655007989851,
+        965307477698707509,
+        1001492298095394826,
+        853362025349644308,
+    )
+    # This checks if the command was invoked in the correct channel
+
+# poke
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 # This sets how many instances of this command can run at the same time, if 2 people use this command at the same time one will return an error
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 # This sets the length of the cooldown and how many times a command has to be used for the cooldown to trigger
 # The bucket represents on what basis the cooldown is applied, this one is applied on a server basis
 @lightbulb.command('poke', 'check if maya is awake! (use as ping command)')
@@ -93,8 +106,9 @@ async def ping(ctx):
 
 # Maya
 @bot.command
+@lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
@@ -116,7 +130,7 @@ async def maya(ctx):
 # Megu
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
@@ -138,7 +152,7 @@ async def megu(ctx):
 # Chino
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
@@ -160,7 +174,7 @@ async def chino(ctx):
 # Chimame
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
@@ -182,7 +196,7 @@ async def chimame(ctx):
 # Cocoa
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
@@ -204,7 +218,7 @@ async def cocoa(ctx):
 # Rize
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('rize', 'provides an adorable rize image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
@@ -226,7 +240,7 @@ async def rize(ctx):
 # Syaro
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
@@ -248,7 +262,7 @@ async def syaro(ctx):
 # Chiya
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
@@ -270,7 +284,7 @@ async def chiya(ctx):
 # Fuyu
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def fuyu(ctx):
@@ -300,7 +314,7 @@ RPS_response_list = (
 # RPS
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "your play", choices = ("Rock", "Paper", "Scissors"), required=True)
 # This is an option decorator which allow people to input something before sending the command
 # The 'choices=' allows you to set specific options for the user to choose from, if this isnt added the user can input anything
@@ -357,7 +371,7 @@ async def rps(ctx):
 # Rate
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "What you want maya to rate.", required=True)
 @lightbulb.command('rate', 'Make Maya rate something!')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -492,7 +506,7 @@ async def rate(ctx):
 # Most of the code here was contributed by contributors on the support discord
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "what you want to say to maya. (WIP)", required=True)
 @lightbulb.command('say', 'say something to maya')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -634,7 +648,7 @@ async def rpsstats(ctx: lightbulb.context):
 @lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.GuildBucket)
 @lightbulb.command("github", "link to the bot's github page")
 @lightbulb.implements(lightbulb.SlashCommand)
-async def maya(ctx):
+async def github(ctx):
     if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
