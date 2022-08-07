@@ -16,3 +16,5 @@ If you don't have one, you can create a Discord application at https://discord.c
 
 Initialize a banned users file with: \
 `echo "bannedusers = []" >> bannedusers.py`
+
+Add your server ID and channel ID at the lines 34 and 68, respectively.
