@@ -1,0 +1,4 @@
+tinydb >= 4.7.0
+hikari-lightbulb >= 2.2.4
+hikari >= 2.0.0.dev109
+
