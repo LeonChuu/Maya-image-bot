@@ -53,8 +53,8 @@ async def on_error(event: lightbulb.CommandErrorEvent):
             )
         # This is an error condition that triggers if too many commands are trying to run at the same time
     if isinstance(event.exception, lightbulb.CheckFailure):
-        await event.context.respond(f"Please use the designated channel/thread for commands (<#1004841655007989851> for rabbit house)", flags=hikari.MessageFlag.EPHEMERAL)
         print("redirect")
+        await event.context.respond(f"Please use the designated channel/thread for commands (<#1004841655007989851> for rabbit house)", flags=hikari.MessageFlag.EPHEMERAL)
         # this is an error condition that triggers if certain checks arent met
 
 @bot.listen(hikari.StartedEvent)
@@ -295,7 +295,7 @@ async def chiya(ctx):
 @lightbulb.add_checks(check_thread)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=2, uses=1, bucket=lightbulb.GuildBucket)
-@lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
+@lightbulb.command('fuyu', 'provides an adorable fuyu image! (MANGA SPOILERS!)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def fuyu(ctx):
     if ctx.author.id in (bannedusers.bannedusers):
